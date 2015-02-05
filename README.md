@@ -127,3 +127,28 @@ More info on how this works can be found in <a href="http://brainbaking.com/webd
 
 `ServiceLogInfoResolver` uses REST to retrieve the logfile from the webserver, since the scenario tests don't have access to those files and they are usually not run on the same machine, so there's no way to retrieve them by simply reading a file. If you have some other way to provide extra information when something goes wrong, implement another `IExceptionLogInfoResolver`. 
 
+### Using async waiting in page objects
+
+Since javascript (and therefore Extjs) uses async callbacks for Ajax etc, one cannot simply wait 3 or 4 seconds until "stuff" is done. There are two important methods to help avoid this: `WaitUntilAjaxLoadingDone` and `WaitUntilExtjsLoadingDone`. 
+
+#### Ajax loading
+
+We use a hook to count the number of ajax calls currently "busy" on the client - see jsoverrides_mainpage.js. When a call returns, the number is decreased. The method wait until ajax loading is done simply waits until the number is back set to zero, by evaluating `window.ajaxRequests`. 
+
+#### Extjs loading
+
+Extjs sometimes is busy rendering it's views (which is is obviously not an ajax call, so can't use the previous) and WebDriver needs to wait until all rendering is done, otherwise a bunch of random `ElementNotFound` exceptions keep appearing (it works on my machine!).
+
+So, when rendering still is busy, we use load masks, and simply check on the presence of the mask CSS class:
+
+```C#
+Wait(30).UntilNotDisplayed(By.CssSelector(".x-mask-msg"));
+```
+
+* * *
+
+## This is exactly what I need, but x or y could be made like z...
+
+Great, dig in! Fork and submit a merge request, we might be delighted to accept it.
+Thanks for your interest!
+
