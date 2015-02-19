@@ -26,6 +26,11 @@ namespace ExtjsWd.Elements
             get { return By.CssSelector(".x-btn-button"); }
         }
 
+        private static By CssInputFields
+        {
+            get { return By.CssSelector(".x-form-text"); }
+        }
+
         private IEnumerable<IWebElement> Buttons
         {
             get { return _messageBoxRoot.FindElements(CssButton); }
