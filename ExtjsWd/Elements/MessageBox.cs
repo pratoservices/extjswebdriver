@@ -26,7 +26,7 @@ namespace ExtjsWd.Elements
             get { return By.CssSelector(".x-btn-button"); }
         }
 
-        private static By CssInputFields
+        private static By CssInputField
         {
             get { return By.CssSelector(".x-form-text"); }
         }
@@ -34,6 +34,11 @@ namespace ExtjsWd.Elements
         private IEnumerable<IWebElement> Buttons
         {
             get { return _messageBoxRoot.FindElements(CssButton); }
+        }
+
+        private IEnumerable<IWebElement> InputFields
+        {
+            get { return _messageBoxRoot.FindElements(CssInputField); }
         }
 
         public static bool IsOpen(IWebDriver driver)
@@ -57,6 +62,12 @@ namespace ExtjsWd.Elements
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
             this.WaitUntilAjaxLoadingDone();
+        }
+
+        public MessageBox Prompt(string text = "")
+        {
+            InputFields.First(field => field.Enabled).SendKeys(text);
+            return this;
         }
 
         public void Reject(string text = "Nee")
