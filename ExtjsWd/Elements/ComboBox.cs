@@ -61,6 +61,20 @@ namespace ExtjsWd.Elements
             element.SendKeys(Keys.Tab);
             WebElementExtentions.WaitUntilAjaxLoadingDone(element);
         }
+        
+        public static void SelectSecondItem(IWebElement element)
+        {
+            element.Clear();
+            element.SendKeys(Keys.ArrowDown);
+            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            element.SendKeys(Keys.ArrowDown);
+            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            element.SendKeys(Keys.ArrowDown);
+            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            element.SendKeys(Keys.Return);
+            element.SendKeys(Keys.Tab);
+            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+        }
 
         public void Clear()
         {
@@ -74,6 +88,12 @@ namespace ExtjsWd.Elements
         public virtual T SelectFirstItem()
         {
             SelectFirstItem(Input);
+            return (T)this;
+        }
+        
+        public virtual T SelectSecondItem()
+        {
+            SelectSecondItem(Input);
             return (T)this;
         }
 
