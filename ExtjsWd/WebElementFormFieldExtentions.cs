@@ -27,6 +27,10 @@ namespace ExtjsWd
             {
                 return WebElementFormFieldType.DateField;
             }
+            if (webElement.IsTimeField())
+            {
+                return WebElementFormFieldType.TimeField;
+            }
 
             throw new Exception("No Type defined yet for webElement id: " + webElement.GetAttribute("id") + "  - class: " + webElement.GetAttribute("class"));
         }
@@ -59,6 +63,12 @@ namespace ExtjsWd
         {
             return webElement.GetAttribute("class")
                 .Contains("x-form-textarea");
+        }
+
+        public static bool IsTimeField(this IWebElement webElement)
+        {
+            return webElement.GetAttribute("id")
+                .Contains("timefield");
         }
     }
 }

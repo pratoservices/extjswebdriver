@@ -6,6 +6,7 @@
         TextArea,
         DateField,
         CodeCombobox,
-        RadioButton
+        RadioButton,
+        TimeField
     }
 }
