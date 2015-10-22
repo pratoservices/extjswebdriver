@@ -50,6 +50,11 @@ namespace ExtjsWd
                     webElement.SendKeys("27/10/2014");
                     break;
 
+                case WebElementFormFieldType.TimeField:
+                    webElement.Clear();
+                    webElement.SendKeys("10:00");
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
