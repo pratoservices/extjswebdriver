@@ -49,6 +49,11 @@ namespace ExtjsWd.Elements
             get { return Driver.FindElement(By.CssSelector(".x-msg-warning")); }
         }
 
+        public IEnumerable<IWebElement> NotificationWarnings
+        {
+            get { return Driver.FindElements(By.CssSelector(".x-msg-warning")); }
+        }
+
         public string SystemErrorDetectionText { get; set; }
 
         protected int TimeoutInSeconds { get; set; }
@@ -86,6 +91,11 @@ namespace ExtjsWd.Elements
         public IList<string> NotificationErrorsAsText()
         {
             return NotificationErrors.Select(err => err.Text).ToList();
+        }
+
+        public IList<string> NotificationWarningsAsText()
+        {
+            return NotificationWarnings.Select(warn => warn.Text).ToList();
         }
 
         public bool ThrowExceptionIfSystemErrorOccured()
