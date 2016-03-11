@@ -99,6 +99,11 @@ namespace ExtjsWd.Elements
             return NotificationErrors.Select(err => err.Text).ToList();
         }
 
+        public IList<string> NotificationWarningsAsText()
+        {
+            return NotificationWarnings.Select(warn => warn.Text).ToList();
+        }
+
         public bool ThrowExceptionIfSystemErrorOccured()
         {
             var errors = string.Join(",", NotificationErrorsAsText());
