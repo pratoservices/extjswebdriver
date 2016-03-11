@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -69,6 +70,16 @@ namespace ExtjsWd.Elements
         private IEnumerable<IWebElement> NotificationErrors
         {
             get { return Driver.FindElements(By.CssSelector(".x-msg-error")); }
+        }
+
+        public T AssertNoJavascriptErrors<T>() where T : BaseContainerComponent
+        {
+            var javascriptErrors = GetJavascriptErrors();
+
+            Assert.IsNotNull(javascriptErrors, "Can't seem to load JavaScript on the page to find JavaScript errors. Check that JavaScript is enabled.");
+            var javaScriptErrorsAsString = javascriptErrors.Cast<string>().Aggregate("", (current, error) => current + (error + ", "));
+            Assert.AreEqual("", javaScriptErrorsAsString, "Found JavaScript errors on page load: " + javaScriptErrorsAsString);
+            return (T)this;
         }
 
         public void DownloadDocumentFrameShouldBeVisible()
@@ -169,6 +180,22 @@ namespace ExtjsWd.Elements
             };
             wait.IgnoreExceptionTypes(typeof(NotFoundException));
             return wait;
+        }
+
+        private ICollection GetJavascriptErrors()
+        {
+            var js = Driver as IJavaScriptExecutor;
+            ICollection javascriptErrors = null;
+            for (var i = 0; i < 20; i++)
+            {
+                javascriptErrors = js.ExecuteScript("return window.errors;") as ICollection;
+                if (javascriptErrors != null)
+                {
+                    break;
+                }
+                System.Threading.Thread.Sleep(1000);
+            }
+            return javascriptErrors;
         }
     }
 }
