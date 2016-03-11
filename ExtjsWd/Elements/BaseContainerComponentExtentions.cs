@@ -16,7 +16,7 @@ namespace ExtjsWd.Elements
 
         public static T ShouldDisplayWarningNotification<T>(this T callee, string text) where T : BaseContainerComponent
         {
-            callee.WaitUntil(x => callee.NotificationWarning.Text.Contains(text));
+            callee.WaitUntil(x => FindTextInAllWarnings(callee, text));
             return callee;
         }
 
@@ -69,6 +69,11 @@ namespace ExtjsWd.Elements
         {
             callee.Wait(30).UntilNotDisplayed(By.CssSelector(".x-mask-msg"));
             return callee;
+        }
+
+        private static bool FindTextInAllWarnings(BaseContainerComponent callee, string text)
+        {
+            return callee.NotificationWarnings.Any(warning => warning.Text.Contains(text));
         }
     }
 }

@@ -45,9 +45,9 @@ namespace ExtjsWd.Elements
             get { return Driver.FindElement(By.CssSelector(".x-msg-success")); }
         }
 
-        public IWebElement NotificationWarning
+        public IList<IWebElement> NotificationWarnings
         {
-            get { return Driver.FindElement(By.CssSelector(".x-msg-warning")); }
+            get { return Driver.FindElements(By.CssSelector(".x-msg-warning")); }
         }
 
         public string SystemErrorDetectionText { get; set; }
