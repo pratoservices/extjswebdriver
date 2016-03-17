@@ -7,6 +7,12 @@ namespace ExtjsWd.Test.ExtSandBox
     {
         private readonly List<string> _Items = new List<string>();
 
+        public ComponentBuilder AddCheckBox()
+        {
+            return new ComponentBuilder(this)
+                .WithXType("checkbox");
+        }
+
         public void AddItem(string item)
         {
             _Items.Add(item);

@@ -28,15 +28,13 @@ namespace ExtjsWd.Test
         {
             var textFieldElement = Driver.FindElement(By.Name(_TextBoxName));
             var inputTextField = new InputTextField(textFieldElement, Driver);
-            var value = GetValueByName(_TextBoxName);
+            var domInputTextField = DomElement.ByName(_TextBoxName, TestFixture);
 
-            Assert.AreEqual("Dit is een Test", value);
+            Assert.AreEqual("Dit is een Test", domInputTextField.Value);
 
             inputTextField.Clear();
 
-            var newValue = GetValueByName(_TextBoxName);
-
-            Assert.AreEqual("", newValue);
+            Assert.AreEqual("", domInputTextField.Value);
         }
 
         [Test]
@@ -44,15 +42,14 @@ namespace ExtjsWd.Test
         {
             var textFieldElement = Driver.FindElement(By.Name(_TextBoxName));
             var inputTextField = new InputTextField(textFieldElement, Driver);
-            var value = GetValueByName(_TextBoxName);
 
-            Assert.AreEqual("Dit is een Test", value);
+            var domInputTextField = DomElement.ByName(_TextBoxName, TestFixture);
+
+            Assert.AreEqual("Dit is een Test", domInputTextField.Value);
 
             inputTextField.FillIn("Dit is de andere test");
 
-            var newValue = GetValueByName(_TextBoxName);
-
-            Assert.AreEqual("Dit is de andere test", newValue);
+            Assert.AreEqual("Dit is de andere test", domInputTextField.Value);
         }
     }
 }

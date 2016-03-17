@@ -37,10 +37,5 @@ namespace ExtjsWd.Test
                 _TestFixture = null;
             }
         }
-
-        public object GetValueByName(string name)
-        {
-            return TestFixture.EvalJS(" return document.getElementsByName('" + name + "')[0].value;");
-        }
     }
 }

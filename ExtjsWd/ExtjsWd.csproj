@@ -60,6 +60,7 @@
     <Compile Include="Elements\BaseContainerComponentExtentions.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Elements\BasicComboBox.cs" />
+    <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Elements\ComboBox.cs" />
     <Compile Include="Elements\InputTextField.cs" />
     <Compile Include="Elements\MessageBox.cs" />

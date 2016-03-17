@@ -18,6 +18,12 @@ namespace ExtjsWd.Test.ExtSandBox
             return _Builder;
         }
 
+        public ComponentBuilder WithBoolValue(bool value)
+        {
+            _Items.Add("value:" + (value ? "1" : "0"));
+            return this;
+        }
+
         public ComponentBuilder WithClassName(string className)
         {
             _Items.Add("cls:'" + className + "'");
@@ -33,6 +39,12 @@ namespace ExtjsWd.Test.ExtSandBox
         public ComponentBuilder WithName(string name)
         {
             _Items.Add("name:'" + name + "'");
+            return this;
+        }
+
+        public ComponentBuilder WithProperty(string propertyName, string propertyValue)
+        {
+            _Items.Add(propertyName + ":" + propertyValue);
             return this;
         }
 

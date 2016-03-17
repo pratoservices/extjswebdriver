@@ -54,6 +54,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CheckBoxTests.cs" />
+    <Compile Include="DomElement.cs" />
     <Compile Include="ExtSandBox\ComponentBuilder.cs" />
     <Compile Include="ExtSandBox\ExtjsViewBoilerPlate.cs" />
     <Compile Include="ExtSandBox\ExtjsViewBuilder.cs" />
