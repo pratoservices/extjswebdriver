@@ -77,10 +77,14 @@
     <Compile Include="WebElementFormFieldType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ExtjsWd.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="js\jsoverrides_mainpage.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuGet.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
