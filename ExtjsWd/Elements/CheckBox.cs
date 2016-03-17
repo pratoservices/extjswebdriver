@@ -17,9 +17,19 @@ namespace ExtjsWd.Elements
             {
                 if (value != IsChecked())
                 {
-                    Element.FindElement(By.CssSelector("input")).Click();
+                    InputElement.Click();
                 }
             }
+        }
+
+        private IWebElement InputElement
+        {
+            get { return Element.FindElement(By.CssSelector("input")); }
+        }
+
+        public override void Click()
+        {
+            InputElement.Click();
         }
 
         public bool IsChecked()

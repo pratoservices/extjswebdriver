@@ -11,7 +11,7 @@ namespace ExtjsWd.Test
         private string _CheckboxName = "TestCheckBox";
 
         [Test]
-        public void TextBox_Can_Set_Checked()
+        public void CheckBox_Can_Set_Checked()
         {
             CreateCheckbox(false);
             var element = Driver.FindElement(By.CssSelector(".wd-test"));
@@ -33,7 +33,7 @@ namespace ExtjsWd.Test
         }
 
         [Test]
-        public void TextBox_Checked_Value()
+        public void CheckBox_Checked_Value()
         {
             CreateCheckbox(true);
             var element = Driver.FindElement(By.CssSelector(".wd-test"));
@@ -45,7 +45,20 @@ namespace ExtjsWd.Test
         }
 
         [Test]
-        public void TextBox_SetSame_Checked_DoesNotChangeValue()
+        public void CheckBox_Click_Clicks_InputElement()
+        {
+            CreateCheckbox(false);
+            var element = Driver.FindElement(By.CssSelector(".wd-test"));
+            var checkBox = new CheckBox(element, Driver);
+            var checkBoxDomTable = DomElement.ByCssSelector(".wd-test", TestFixture);
+
+            checkBox.Click();
+            Assert.IsTrue(checkBoxDomTable.HasClass("x-form-cb-checked"));
+            Assert.IsTrue(checkBox.Checked);
+        }
+
+        [Test]
+        public void CheckBox_SetSame_Checked_DoesNotChangeValue()
         {
             CreateCheckbox(false);
             var element = Driver.FindElement(By.CssSelector(".wd-test"));
@@ -72,7 +85,7 @@ namespace ExtjsWd.Test
         }
 
         [Test]
-        public void TextBox_UnChecked_Value()
+        public void CheckBox_UnChecked_Value()
         {
             CreateCheckbox(false);
             var element = Driver.FindElement(By.CssSelector(".wd-test"));

@@ -73,7 +73,7 @@ namespace ExtjsWd.Elements
             Element.Clear();
         }
 
-        public void Click()
+        public virtual void Click()
         {
             // IE problem fix: see http://stackoverflow.com/questions/8718927/selenium-webdriver-click-fails-with-ie9
             var driver = Driver as InternetExplorerDriver;
