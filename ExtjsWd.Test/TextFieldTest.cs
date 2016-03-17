@@ -8,14 +8,14 @@ namespace ExtjsWd.Test
     [TestFixture]
     public class TextFieldTest : WebDriverTest
     {
-        private string _TextBoxName = "TestTextBox";
+        private string _TextFieldName = "TestTextField";
 
         [SetUp]
         public void CreateTestWithTextField()
         {
             new ExtjsViewBuilder()
                 .AddTextField()
-                    .WithName(_TextBoxName)
+                    .WithName(_TextFieldName)
                     .WithFieldLabel("TestLabel")
                     .WithClassName("wd-test")
                     .WithValue("Dit is een Test")
@@ -26,9 +26,9 @@ namespace ExtjsWd.Test
         [Test]
         public void TextField_CanClear()
         {
-            var textFieldElement = Driver.FindElement(By.Name(_TextBoxName));
+            var textFieldElement = Driver.FindElement(By.Name(_TextFieldName));
             var inputTextField = new InputTextField(textFieldElement, Driver);
-            var domInputTextField = DomElement.ByName(_TextBoxName, TestFixture);
+            var domInputTextField = DomElement.ByName(_TextFieldName, TestFixture);
 
             Assert.AreEqual("Dit is een Test", domInputTextField.Value);
 
@@ -40,10 +40,10 @@ namespace ExtjsWd.Test
         [Test]
         public void TextField_CanFillIn()
         {
-            var textFieldElement = Driver.FindElement(By.Name(_TextBoxName));
+            var textFieldElement = Driver.FindElement(By.Name(_TextFieldName));
             var inputTextField = new InputTextField(textFieldElement, Driver);
 
-            var domInputTextField = DomElement.ByName(_TextBoxName, TestFixture);
+            var domInputTextField = DomElement.ByName(_TextFieldName, TestFixture);
 
             Assert.AreEqual("Dit is een Test", domInputTextField.Value);
 
