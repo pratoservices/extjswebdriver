@@ -67,9 +67,11 @@
     <Compile Include="Elements\InputTextField.cs" />
     <Compile Include="Elements\MessageBox.cs" />
     <Compile Include="Elements\RecordComboBox.cs" />
+    <Compile Include="EmptyScenarioFixtureInitializer.cs" />
     <Compile Include="Exceptions\IExceptionLogInfoResolver.cs" />
     <Compile Include="Exceptions\NoLogInfoResolver.cs" />
     <Compile Include="Exceptions\ServiceLogInfoResolver.cs" />
+    <Compile Include="IScenarioFixtureInitializer.cs" />
     <Compile Include="js\JSCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioFixture.cs" />

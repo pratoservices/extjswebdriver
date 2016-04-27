@@ -10,8 +10,13 @@ namespace ExtjsWd
         public static TimeSpan DefaultTimeoutForElements = TimeSpan.FromSeconds(10.0);
         public static TimeSpan DefaultTimeoutForPages = TimeSpan.FromSeconds(120.0);
 
-        protected ScenarioFixture()
+        protected ScenarioFixture() : this(new EmptyScenarioFixtureInitializer())
         {
+        }
+
+        protected ScenarioFixture(IScenarioFixtureInitializer initializer)
+        {
+            initializer.InitializeFixture(this);
             StartChromeDriver();
         }
 
