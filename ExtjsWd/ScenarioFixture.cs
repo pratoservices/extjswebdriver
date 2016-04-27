@@ -17,7 +17,7 @@ namespace ExtjsWd
 
         public static ScenarioFixture Instance { get; set; }
 
-        public int AjaxRequestsBusy 
+        public int AjaxRequestsBusy
         {
             get { return int.Parse(EvalJS("return window.ajaxRequests").ToString()); }
         }
