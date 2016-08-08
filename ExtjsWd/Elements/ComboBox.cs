@@ -32,7 +32,7 @@ namespace ExtjsWd.Elements
 
         public IWebElement ArrowDown
         {
-            get { return Root.FindElement(By.CssSelector("[role=\"button\"]")); }
+            get { return Root.FindElement(By.CssSelector(".x-form-arrow-trigger")); }
         }
 
         public virtual bool Enabled
