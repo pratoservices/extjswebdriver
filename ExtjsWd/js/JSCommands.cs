@@ -17,13 +17,7 @@ namespace ExtjsWd.js
 
         public static void CloseAllWindows()
         {
-            const string killWindowsViaExtjs = @"
-                for(var i in Ext.WindowMgr.list) {
-                    var val = Ext.WindowMgr.list[i];
-                    if(val.isComponent && val.isVisible()) {
-                        val.destroy();
-                    }
-                }";
+            const string killWindowsViaExtjs = @"Ext.WindowMgr.each(function(itemToDestroy){if(itemToDestroy.isComponent && itemToDestroy.isVisible()) {itemToDestroy.destroy();}});";
             EvalJS(killWindowsViaExtjs);
         }
 
