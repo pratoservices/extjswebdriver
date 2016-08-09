@@ -5,3 +5,5 @@ obj/
 *.pdb
 *.cache
 *.user
+*.nupkg
+*.suo
