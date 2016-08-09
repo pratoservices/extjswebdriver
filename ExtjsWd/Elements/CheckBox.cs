@@ -17,19 +17,19 @@ namespace ExtjsWd.Elements
             {
                 if (value != IsChecked())
                 {
-                    InputElement.Click();
+                    TheClickableCheckbox.Click();
                 }
             }
         }
 
-        private IWebElement InputElement
+        private IWebElement TheClickableCheckbox
         {
-            get { return Element.FindElement(By.CssSelector("input")); }
+            get { return Element.FindElement(By.CssSelector(".x-form-checkbox")); }
         }
 
         public override void Click()
         {
-            InputElement.Click();
+            TheClickableCheckbox.Click();
         }
 
         public bool IsChecked()
