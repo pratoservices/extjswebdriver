@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Linq;
+using ExtjsWd.js;
 
 namespace ExtjsWd
 {
@@ -113,6 +114,23 @@ namespace ExtjsWd
                 .Contains("x-item-disabled")
                 && readOnlyAttribute == null
                 && disabledAttribute == null;
+        }
+
+        public static T ClickUsingJavascript<T>(this T webElement) where T : IWebElement
+        {
+            JSCommands.ClickUsingJavascript(webElement.Location.X, webElement.Location.Y);
+            return webElement;
+        }
+
+        public static T ClickUsingAction<T>(this T webElement) where T : IWebElement
+        {
+            new Actions(ScenarioFixture.Instance.Driver)
+                   .MoveToElement(webElement)
+                   .Click()
+                   .Build()
+                   .Perform();
+            return webElement;
+         
         }
 
         public static bool IsRequired(this IWebElement webElement)

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace ExtjsWd.js
 {
@@ -10,6 +11,7 @@ namespace ExtjsWd.js
             ScenarioFixture.Instance.EvalJS(closeMsgBoxesViaExtjs);
         }
 
+   
         public static void CloseAllTooltips()
         {
             EvalJS("[].forEach.call(document.querySelectorAll('.x-tip'), function(el) { el.remove(); })");
@@ -44,6 +46,11 @@ namespace ExtjsWd.js
             return new StreamReader(
                     assembly.GetManifestResourceStream(assembly.GetName().Name + "." + relativePath.Replace("/", ".")))
                     .ReadToEnd();
+        }
+
+        public static void ClickUsingJavascript(int x, int y)
+        {
+            EvalJS("document.elementFromPoint(" + x + "," + y + ").click();");
         }
     }
 }
