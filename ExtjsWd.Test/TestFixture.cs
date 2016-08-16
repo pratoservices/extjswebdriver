@@ -10,7 +10,7 @@ namespace ExtjsWd.Test
 
         public override string ResolveHostAndPort()
         {
-            return Directory.GetCurrentDirectory() + "/ExtSandBox/test.html";
+            return Directory.GetCurrentDirectory() + "/ExtSandBox/test4.html";
         }
     }
 }

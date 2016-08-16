@@ -75,7 +75,7 @@
     <None Include="chromedriver.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ExtSandBox\test.html">
+    <None Include="ExtSandBox\test4.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="ExtSandBox\test.js" />

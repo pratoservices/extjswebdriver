@@ -27,6 +27,12 @@ namespace ExtjsWd
             get { return int.Parse(EvalJS("return window.ajaxRequests").ToString()); }
         }
 
+        public int ExtVersion
+        {
+            get { return int.Parse(EvalJS("return Ext.versions.extjs.getMajor();").ToString()); }
+        }
+
+      
         public IWebDriver Driver { get; private set; }
 
         public static IWebDriver CreateChromeDriver(TimeSpan timeout)

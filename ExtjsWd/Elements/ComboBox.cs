@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq.Expressions;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace ExtjsWd.Elements
@@ -32,7 +33,17 @@ namespace ExtjsWd.Elements
 
         public IWebElement ArrowDown
         {
-            get { return Root.FindElement(By.CssSelector(".x-form-arrow-trigger")); }
+            get {
+                try
+                {
+                    return Root.FindElement(By.CssSelector("[role=\"button\"]"));
+                }
+                catch
+                {
+                    return Root.FindElement(By.CssSelector(".x-form-arrow-trigger"));
+                }
+                
+             }
         }
 
         public virtual bool Enabled
@@ -53,8 +64,11 @@ namespace ExtjsWd.Elements
         public static void SelectFirstItem(IWebElement element)
         {
             element.Clear();
-            element.SendKeys(Keys.ArrowDown);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            if (ScenarioFixture.Instance.ExtVersion == 4)
+            {
+                element.SendKeys(Keys.ArrowDown);
+                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            }
             element.SendKeys(Keys.ArrowDown);
             WebElementExtentions.WaitUntilAjaxLoadingDone(element);
             element.SendKeys(Keys.Return);
@@ -65,8 +79,11 @@ namespace ExtjsWd.Elements
         public static void SelectSecondItem(IWebElement element)
         {
             element.Clear();
-            element.SendKeys(Keys.ArrowDown);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            if (ScenarioFixture.Instance.ExtVersion == 4)
+            {
+                element.SendKeys(Keys.ArrowDown);
+                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            }
             element.SendKeys(Keys.ArrowDown);
             WebElementExtentions.WaitUntilAjaxLoadingDone(element);
             element.SendKeys(Keys.ArrowDown);

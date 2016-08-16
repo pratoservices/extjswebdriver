@@ -62,10 +62,12 @@
     <Compile Include="Elements\BaseContainerComponentExtentions.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Elements\BasicComboBox.cs" />
+    <Compile Include="Elements\CheckableElement.cs" />
     <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Elements\ComboBox.cs" />
     <Compile Include="Elements\InputTextField.cs" />
     <Compile Include="Elements\MessageBox.cs" />
+    <Compile Include="Elements\RadioButton.cs" />
     <Compile Include="Elements\RecordComboBox.cs" />
     <Compile Include="EmptyScenarioFixtureInitializer.cs" />
     <Compile Include="Exceptions\IExceptionLogInfoResolver.cs" />
@@ -81,7 +83,9 @@
     <Compile Include="WebElementFormFieldType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ExtjsWd.nuspec" />
+    <None Include="ExtjsWd.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
