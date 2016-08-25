@@ -1,10 +1,10 @@
 ﻿using ExtjsWd.Elements;
+using ExtjsWd.js;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Linq;
-using ExtjsWd.js;
 
 namespace ExtjsWd
 {
@@ -14,6 +14,22 @@ namespace ExtjsWd
         {
             return webElement.GetAttribute("class")
                 .Contains("x-form-cb-checked");
+        }
+
+        public static T ClickUsingAction<T>(this T webElement) where T : IWebElement
+        {
+            new Actions(ScenarioFixture.Instance.Driver)
+                   .MoveToElement(webElement)
+                   .Click()
+                   .Build()
+                   .Perform();
+            return webElement;
+        }
+
+        public static T ClickUsingJavascript<T>(this T webElement) where T : IWebElement
+        {
+            JSCommands.ClickUsingJavascript(webElement.Location.X, webElement.Location.Y);
+            return webElement;
         }
 
         public static IWebElement DoubleClick(this IWebElement webElement)
@@ -85,6 +101,10 @@ namespace ExtjsWd
         /// <returns></returns>
         public static string GetValue(this IWebElement webElement)
         {
+            if (webElement.GetAttribute("valuenow") != null)
+            {
+                return webElement.GetAttribute("valuenow");
+            }
             return webElement.GetAttribute("value");
         }
 
@@ -114,23 +134,6 @@ namespace ExtjsWd
                 .Contains("x-item-disabled")
                 && readOnlyAttribute == null
                 && disabledAttribute == null;
-        }
-
-        public static T ClickUsingJavascript<T>(this T webElement) where T : IWebElement
-        {
-            JSCommands.ClickUsingJavascript(webElement.Location.X, webElement.Location.Y);
-            return webElement;
-        }
-
-        public static T ClickUsingAction<T>(this T webElement) where T : IWebElement
-        {
-            new Actions(ScenarioFixture.Instance.Driver)
-                   .MoveToElement(webElement)
-                   .Click()
-                   .Build()
-                   .Perform();
-            return webElement;
-         
         }
 
         public static bool IsRequired(this IWebElement webElement)
