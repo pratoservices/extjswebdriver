@@ -101,9 +101,9 @@ namespace ExtjsWd
         /// <returns></returns>
         public static string GetValue(this IWebElement webElement)
         {
-            if (webElement.GetAttribute("valuenow") != null)
+            if (webElement.GetAttribute("aria-valuenow") != null)
             {
-                return webElement.GetAttribute("valuenow");
+                return webElement.GetAttribute("aria-valuenow");
             }
             return webElement.GetAttribute("value");
         }
