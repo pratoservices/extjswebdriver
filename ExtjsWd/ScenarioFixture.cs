@@ -77,6 +77,18 @@ namespace ExtjsWd
             {
                 return ((IJavaScriptExecutor)Driver).ExecuteScript(js);
             }
+            catch(Exception ex)
+            {
+                return null;
+            }
+       
+        }
+    public object EvalJS(IWebElement webElement, string js)
+        {
+            try
+            {
+                return ((IJavaScriptExecutor)Driver).ExecuteScript(js, webElement);
+            }
             catch
             {
                 // OMNOMNOM.

@@ -179,6 +179,11 @@ namespace ExtjsWd
             return webElement;
         }
 
+        public static void SetAttribute(this IWebElement webElement, string attributeName, string value)
+        {
+            JSCommands.SetAttribute(webElement,attributeName,value);
+        }
+
         public static void UntilNotDisplayed(this DefaultWait<IWebDriver> webDriverWait, By selector)
         {
             webDriverWait.Until(driver =>

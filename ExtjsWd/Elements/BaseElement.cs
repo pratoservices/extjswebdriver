@@ -3,6 +3,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Interactions.Internal;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using ExtjsWd.js;
 
 namespace ExtjsWd.Elements
 {
@@ -26,6 +27,11 @@ namespace ExtjsWd.Elements
         public ICoordinates Coordinates
         {
             get { return ((ILocatable)Element).Coordinates; }
+        }
+
+        public string Value
+        {
+            get { return JSCommands.GetPropertyOfWebElement(this, "value"); }
         }
 
         public bool Displayed

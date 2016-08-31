@@ -6,6 +6,7 @@ namespace ExtjsWd.Test
     {
         public TestFixture()
         {
+            Instance = this;
         }
 
         public override string ResolveHostAndPort()

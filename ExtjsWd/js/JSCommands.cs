@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using OpenQA.Selenium;
 
 namespace ExtjsWd.js
 {
@@ -34,6 +34,24 @@ namespace ExtjsWd.js
         public static void EvalJSFile(string path)
         {
             EvalJS(ReadJSFile(path));
+        }
+
+        //Returns the contents of the property of the domelemnt attached to the webelement
+        public static string GetPropertyOfWebElement(IWebElement webElement, string propertyName)
+        {
+            var id = webElement.GetAttribute("id");
+            var result =  ScenarioFixture.Instance.EvalJS("return document.getElementById('" + id + "')." +propertyName);
+            if (result == null)
+            {
+                return string.Empty;
+            }
+            return result.ToString();
+        }
+
+        public static void SetAttribute(IWebElement webElement, string attributeName, string value)
+        {
+            var id = webElement.GetAttribute("id");
+           ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').setAttribute('" + attributeName + "', '" + value + "')");
         }
 
         private static void EvalJS(string js)

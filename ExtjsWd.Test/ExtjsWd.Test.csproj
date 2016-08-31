@@ -63,6 +63,7 @@
     <Compile Include="ExtSandBox\ComponentBuilder.cs" />
     <Compile Include="ExtSandBox\ExtjsViewBoilerPlate.cs" />
     <Compile Include="ExtSandBox\ExtjsViewBuilder.cs" />
+    <Compile Include="JSCommandsTests.cs" />
     <Compile Include="TestFixture.cs" />
     <Compile Include="TextFieldTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
