@@ -14,8 +14,7 @@ namespace ExtjsWd.js
    
         public static void CloseAllTooltips()
         {
-            EvalJS("[].forEach.call(document.querySelectorAll('.x-tip'), function(el) { el.remove(); })");
-            EvalJS("[].forEach.call(document.querySelectorAll('.x-css-shadow'), function(el) { el.remove(); })");
+            EvalJS("Ext.ux.desktop.MessageFactory.hideAll();");
         }
 
         public static void CloseAllWindows()
