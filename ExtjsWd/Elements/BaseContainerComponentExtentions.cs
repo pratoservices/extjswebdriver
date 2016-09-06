@@ -14,6 +14,12 @@ namespace ExtjsWd.Elements
             return callee;
         }
 
+        public static T ShouldDisplayInfoNotification<T>(this T callee, string text) where T : BaseContainerComponent
+        {
+            callee.WaitUntil(x => callee.NotificationInfo.Text.Contains(text));
+            return callee;
+        }
+
         public static T ShouldDisplayWarningNotification<T>(this T callee, string text) where T : BaseContainerComponent
         {
             callee.WaitUntil(x => FindTextInAllWarnings(callee, text));
