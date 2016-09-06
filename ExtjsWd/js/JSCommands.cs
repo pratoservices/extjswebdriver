@@ -53,6 +53,12 @@ namespace ExtjsWd.js
            ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').setAttribute('" + attributeName + "', '" + value + "')");
         }
 
+        public static void ScrollIntoView(IWebElement webElement)
+        {
+            var id = webElement.GetAttribute("id");
+           ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').scrollIntoView(true);");
+        }
+
         private static void EvalJS(string js)
         {
             ScenarioFixture.Instance.EvalJS(js);
