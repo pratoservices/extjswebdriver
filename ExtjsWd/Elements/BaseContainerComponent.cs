@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -40,14 +41,14 @@ namespace ExtjsWd.Elements
             get { return NotificationErrors.FirstOrDefault(); }
         }
 
+        public ReadOnlyCollection<IWebElement> NotificationInfos
+        {
+            get { return Driver.FindElements(By.CssSelector(".x-msg-info")); }
+        }
+
         public IWebElement NotificationSuccess
         {
             get { return Driver.FindElement(By.CssSelector(".x-msg-success")); }
-        }
-
-        public IWebElement NotificationInfo
-        {
-            get { return Driver.FindElement(By.CssSelector(".x-msg-info")); }
         }
 
         public IList<IWebElement> NotificationWarnings

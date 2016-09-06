@@ -8,15 +8,15 @@ namespace ExtjsWd.Elements
 {
     public static class BaseContainerComponentExtentions
     {
-        public static T ShouldDisplaySuccessNotification<T>(this T callee, string text) where T : BaseContainerComponent
+        public static T ShouldDisplayInfoNotification<T>(this T callee, string text) where T : BaseContainerComponent
         {
-            callee.WaitUntil(x => callee.NotificationSuccess.Text.Contains(text));
+            callee.WaitUntil(x => FindTextInAllInfos(callee, text));
             return callee;
         }
 
-        public static T ShouldDisplayInfoNotification<T>(this T callee, string text) where T : BaseContainerComponent
+        public static T ShouldDisplaySuccessNotification<T>(this T callee, string text) where T : BaseContainerComponent
         {
-            callee.WaitUntil(x => callee.NotificationInfo.Text.Contains(text));
+            callee.WaitUntil(x => callee.NotificationSuccess.Text.Contains(text));
             return callee;
         }
 
@@ -85,6 +85,11 @@ namespace ExtjsWd.Elements
         {
             callee.Wait(30).UntilNotDisplayed(By.CssSelector(".x-mask-msg"));
             return callee;
+        }
+
+        private static bool FindTextInAllInfos(BaseContainerComponent callee, string text)
+        {
+            return callee.NotificationInfos.Any(warning => warning.Text.Contains(text));
         }
 
         private static bool FindTextInAllWarnings(BaseContainerComponent callee, string text)
