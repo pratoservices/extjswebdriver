@@ -26,6 +26,12 @@ namespace ExtjsWd
             return webElement;
         }
 
+        public static T ScrollIntoView<T>(this T webElement) where T : IWebElement
+        {
+            JSCommands.ScrollIntoView(webElement);
+            return webElement;
+        }
+
         public static T ClickUsingJavascript<T>(this T webElement) where T : IWebElement
         {
             JSCommands.ClickUsingJavascript(webElement.Location.X, webElement.Location.Y);
