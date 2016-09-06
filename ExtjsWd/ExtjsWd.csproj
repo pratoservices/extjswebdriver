@@ -92,11 +92,8 @@
     <EmbeddedResource Include="js\jsoverrides_mainpage.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <Message Text="Generating NUSPEC file..." Importance="high" />
+    <Exec Command="nugetpack.bat" ContinueOnError="true" />
   </Target>
-  -->
 </Project>
