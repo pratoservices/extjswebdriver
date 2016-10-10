@@ -22,5 +22,27 @@ namespace ExtjsWd.Elements
 
             return this;
         }
+
+        public InputTextField FillInSlow(string text)
+        {
+            Clear();
+
+            if (string.IsNullOrEmpty(text))
+            {
+                SendKeys("");
+            }
+            else
+            {
+                foreach (var character in text)
+                {
+                    this.WaitForSomeMiliTime(200);
+                    SendKeys(character.ToString());
+                }
+            }
+
+            SendKeys(Keys.Tab);
+
+            return this;
+        }
     }
 }
