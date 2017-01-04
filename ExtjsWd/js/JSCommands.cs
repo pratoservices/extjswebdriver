@@ -5,14 +5,18 @@ namespace ExtjsWd.js
 {
     public static class JSCommands
     {
+        public static void ClickUsingJavascript(int x, int y)
+        {
+            EvalJS("document.elementFromPoint(" + x + "," + y + ").click();");
+        }
+
         public static void CloseAllMessageBoxes()
         {
             const string closeMsgBoxesViaExtjs = @"Ext.Msg.close();";
             ScenarioFixture.Instance.EvalJS(closeMsgBoxesViaExtjs);
         }
 
-   
-        public static void CloseAllTooltips()
+        public static void CloseAllNotifications()
         {
             EvalJS("Ext.ux.desktop.MessageFactory.hideAll();");
         }
@@ -27,7 +31,7 @@ namespace ExtjsWd.js
         {
             CloseAllMessageBoxes();
             CloseAllWindows();
-            CloseAllTooltips();
+            CloseAllNotifications();
         }
 
         public static void EvalJSFile(string path)
@@ -39,7 +43,7 @@ namespace ExtjsWd.js
         public static string GetPropertyOfWebElement(IWebElement webElement, string propertyName)
         {
             var id = webElement.GetAttribute("id");
-            var result =  ScenarioFixture.Instance.EvalJS("return document.getElementById('" + id + "')." +propertyName);
+            var result = ScenarioFixture.Instance.EvalJS("return document.getElementById('" + id + "')." + propertyName);
             if (result == null)
             {
                 return string.Empty;
@@ -47,16 +51,16 @@ namespace ExtjsWd.js
             return result.ToString();
         }
 
-        public static void SetAttribute(IWebElement webElement, string attributeName, string value)
-        {
-            var id = webElement.GetAttribute("id");
-           ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').setAttribute('" + attributeName + "', '" + value + "')");
-        }
-
         public static void ScrollIntoView(IWebElement webElement)
         {
             var id = webElement.GetAttribute("id");
-           ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').scrollIntoView(true);");
+            ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').scrollIntoView(true);");
+        }
+
+        public static void SetAttribute(IWebElement webElement, string attributeName, string value)
+        {
+            var id = webElement.GetAttribute("id");
+            ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').setAttribute('" + attributeName + "', '" + value + "')");
         }
 
         private static void EvalJS(string js)
@@ -70,11 +74,6 @@ namespace ExtjsWd.js
             return new StreamReader(
                     assembly.GetManifestResourceStream(assembly.GetName().Name + "." + relativePath.Replace("/", ".")))
                     .ReadToEnd();
-        }
-
-        public static void ClickUsingJavascript(int x, int y)
-        {
-            EvalJS("document.elementFromPoint(" + x + "," + y + ").click();");
         }
     }
 }

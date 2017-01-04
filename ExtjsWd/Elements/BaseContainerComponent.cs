@@ -83,6 +83,11 @@ namespace ExtjsWd.Elements
             return (T)this;
         }
 
+        public void CloseAllNotifications()
+        {
+            JSCommands.CloseAllNotifications();
+        }
+
         public void DownloadDocumentFrameShouldBeVisible()
         {
             Assert.IsTrue(Driver.Wait(10).Until(x => DocumentDownloadButtonInFrameDisplayed));
@@ -129,16 +134,6 @@ namespace ExtjsWd.Elements
         public WebDriverWait Wait()
         {
             return Driver.Wait(TimeoutInSeconds);
-        }
-
-        public void WaitForNotificationErrorDisappeared()
-        {
-            JSCommands.CloseAllTooltips();
-        }
-
-        public void WaitForNotificationSuccessDisappeared()
-        {
-            JSCommands.CloseAllTooltips();
         }
 
         public bool WaitUntil(int secs, Func<IWebDriver, bool> cond)
