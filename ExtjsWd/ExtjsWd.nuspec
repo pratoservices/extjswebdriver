@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ExtjsWd</id>
-    <version>1.5.11</version>
+    <version>1.5.12</version>
     <title>ExtjsWd</title>
     <authors>Prato Services</authors>
     <owners>Prato Services</owners>
