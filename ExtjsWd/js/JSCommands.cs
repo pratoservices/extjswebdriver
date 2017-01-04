@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using OpenQA.Selenium;
 
 namespace ExtjsWd.js
@@ -49,6 +50,11 @@ namespace ExtjsWd.js
                 return string.Empty;
             }
             return result.ToString();
+        }
+
+        public static void MouseDownByCssSelector()
+        {
+            throw new Exception("Laatste versie van ExtjsWd staat mogelijk nog lokaal op laptop Niels. Hij zal dit terug oplossen.");
         }
 
         public static void ScrollIntoView(IWebElement webElement)
