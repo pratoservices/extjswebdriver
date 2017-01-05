@@ -83,9 +83,11 @@ namespace ExtjsWd.Elements
             return (T)this;
         }
 
-        public void CloseAllNotifications()
+        public T CloseAllNotifications<T>() where T : BaseContainerComponent
         {
             JSCommands.CloseAllNotifications();
+
+            return (T)this;
         }
 
         public void DownloadDocumentFrameShouldBeVisible()
