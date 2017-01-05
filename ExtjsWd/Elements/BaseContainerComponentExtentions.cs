@@ -63,6 +63,13 @@ namespace ExtjsWd.Elements
             return callee;
         }
 
+        public static T ShouldHaveNoWarningNotification<T>(this T callee) where T : BaseContainerComponent
+        {
+            var warnings = callee.NotificationWarningsAsText();
+            Assert.IsFalse(warnings.Any(), string.Format("Expected no warning notifications to be present, but found {0}: \n{1}", warnings.Count, string.Join(",\n", warnings)));
+            return callee;
+        }
+
         public static T WaitForSomeMiliTime<T>(this T callingObject, int timeOutInMiliSeconds)
         {
             Thread.Sleep(timeOutInMiliSeconds);
