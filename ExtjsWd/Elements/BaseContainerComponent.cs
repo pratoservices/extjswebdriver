@@ -90,6 +90,11 @@ namespace ExtjsWd.Elements
             return (T)this;
         }
 
+        public BaseContainerComponent CloseAllNotifications()
+        {
+            return CloseAllNotifications<BaseContainerComponent>();
+        }
+
         public void DownloadDocumentFrameShouldBeVisible()
         {
             Assert.IsTrue(Driver.Wait(10).Until(x => DocumentDownloadButtonInFrameDisplayed));
