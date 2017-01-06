@@ -52,9 +52,9 @@ namespace ExtjsWd.js
             return result.ToString();
         }
 
-        public static void MouseDownByCssSelector(string deParameter)
+        public static void MouseDownByCssSelector(string cssSelector)
         {
-            throw new Exception($"Laatste versie van ExtjsWd staat mogelijk nog lokaal op laptop Niels. Hij zal dit terug oplossen. Daarna zal parameter {deParameter} terug werken.");
+            EvalJS("var foundElement = document.querySelector('" + cssSelector + "') ;  var clickEvent = document.createEvent('MouseEvents'); clickEvent.initEvent('mousedown', true, true); foundElement.dispatchEvent(clickEvent);");
         }
 
         public static void ScrollIntoView(IWebElement webElement)
