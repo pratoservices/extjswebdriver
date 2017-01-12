@@ -1,3 +1,5 @@
+[![Build status](https://travis-ci.org/pratoservices/extjswebdriver.svg?branch=master)](https://travis-ci.org/pratoservices/extjswebdriver)
+
 # extjswebdriver
 
 ## What's this?
