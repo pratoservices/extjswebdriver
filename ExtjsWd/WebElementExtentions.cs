@@ -26,12 +26,6 @@ namespace ExtjsWd
             return webElement;
         }
 
-        public static T ScrollIntoView<T>(this T webElement) where T : IWebElement
-        {
-            JSCommands.ScrollIntoView(webElement);
-            return webElement;
-        }
-
         public static T ClickUsingJavascript<T>(this T webElement) where T : IWebElement
         {
             JSCommands.ClickUsingJavascript(webElement.Location.X, webElement.Location.Y);
@@ -131,6 +125,19 @@ namespace ExtjsWd
             return webElement.GetAttribute("innerHTML");
         }
 
+        public static bool IsElementPresent(this IWebElement webElement, By findElementBy)
+        {
+            try
+            {
+                webElement.FindElement(findElementBy);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public static bool IsEnabled(this IWebElement webElement)
         {
             var classAttribute = webElement.GetAttribute("class");
@@ -168,6 +175,17 @@ namespace ExtjsWd
             return webElement;
         }
 
+        public static T ScrollIntoView<T>(this T webElement) where T : IWebElement
+        {
+            JSCommands.ScrollIntoView(webElement);
+            return webElement;
+        }
+
+        public static void SetAttribute(this IWebElement webElement, string attributeName, string value)
+        {
+            JSCommands.SetAttribute(webElement, attributeName, value);
+        }
+
         public static T SetFieldValue<T>(this T webElement, string fieldName, string text) where T : IWebElement
         {
             var field = webElement.FindElement(By.Name(fieldName));
@@ -183,11 +201,6 @@ namespace ExtjsWd
             webElement.SendKeys(text);
             webElement.SendKeys(Keys.Tab);
             return webElement;
-        }
-
-        public static void SetAttribute(this IWebElement webElement, string attributeName, string value)
-        {
-            JSCommands.SetAttribute(webElement,attributeName,value);
         }
 
         public static void UntilNotDisplayed(this DefaultWait<IWebDriver> webDriverWait, By selector)
