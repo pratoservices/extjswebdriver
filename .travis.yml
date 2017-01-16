@@ -1,0 +1,11 @@
+# sudo: required
+language: csharp
+solution: ExtjsWd/ExtjsWd.sln
+install:
+  - nuget restore ExtjsWd/ExtjsWd.sln
+#  - nuget install NUnit.Console -Version 3.5.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release ExtjsWd/ExtjsWd.sln
+# doesn't work that easily, chromedriver.exe we packaged is a win32 binary, plus no X server setup
+# see https://github.com/travis-ci/travis-ci/issues/272
+#  - mono ./testrunner/NUnit.ConsoleRunner.3.5.0/tools/nunit3-console.exe ./ExtjsWd.Test/bin/Release/ExtjsWd.Test.dll
