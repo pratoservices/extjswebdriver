@@ -13,9 +13,7 @@ namespace ExtjsWd.js
 
         public static void CloseAllMessageBoxes()
         {
-            const string closeMsgBoxesViaExtjs = @"try { 
-Ext.Msg.close(); 
-} catch { }";
+            const string closeMsgBoxesViaExtjs = @"try { Ext.Msg.close(); } catch (e) { }";
             ScenarioFixture.Instance.EvalJS(closeMsgBoxesViaExtjs);
         }
 
