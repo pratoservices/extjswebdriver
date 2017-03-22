@@ -88,9 +88,21 @@ namespace ExtjsWd.Elements
             return callee;
         }
 
+        public static T WaitUntilAjaxLoadingDone<T>(this T callee, int timeoutSeconds) where T : BaseContainerComponent
+        {
+            callee.WaitUntil(timeoutSeconds, x => callee.AjaxRequestsBusy == 0);
+            return callee;
+        }
+
         public static T WaitUntilExtLoadingDone<T>(this T callee) where T : BaseContainerComponent
         {
             callee.Wait(30).UntilNotDisplayed(By.CssSelector(".x-mask-msg"));
+            return callee;
+        }
+
+        public static T WaitUntilExtLoadingDone<T>(this T callee, int timeoutSeconds) where T : BaseContainerComponent
+        {
+            callee.Wait(timeoutSeconds).UntilNotDisplayed(By.CssSelector(".x-mask-msg"));
             return callee;
         }
 
