@@ -59,5 +59,11 @@ namespace ExtjsWd.Test.ExtSandBox
             _Items.Add("xtype:'" + xtype + "'");
             return this;
         }
+
+        public ComponentBuilder WithListener(string @event, string function)
+        {
+            _Items.Add("listeners: { " + @event + ": " + function + " }");
+            return this;
+        }
     }
 }

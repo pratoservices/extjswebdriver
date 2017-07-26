@@ -74,6 +74,11 @@ namespace ExtjsWd.Elements
             get { return Element.Text; }
         }
 
+        public bool HasFocus
+        {
+            get { return Driver.SwitchTo().ActiveElement().Equals(Element); }
+        }
+
         public void Clear()
         {
             Element.Clear();

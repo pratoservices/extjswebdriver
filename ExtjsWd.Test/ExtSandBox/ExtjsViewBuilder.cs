@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using NUnit.Framework;
 
 namespace ExtjsWd.Test.ExtSandBox
 {
@@ -26,7 +27,7 @@ namespace ExtjsWd.Test.ExtSandBox
 
         public void WriteItemsToTestjs()
         {
-            File.WriteAllText(@"ExtSandBox\test.js", Build());
+            File.WriteAllText(Path.Combine(TestContext.CurrentContext.TestDirectory, @"ExtSandBox\test.js"), Build());
         }
 
         private string Build()

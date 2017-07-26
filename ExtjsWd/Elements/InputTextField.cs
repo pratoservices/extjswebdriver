@@ -44,5 +44,11 @@ namespace ExtjsWd.Elements
 
             return this;
         }
+
+        public InputTextField PressEnter()
+        {
+            SendKeys(Keys.Enter);
+            return this;
+        }
     }
 }

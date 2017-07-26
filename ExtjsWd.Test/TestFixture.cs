@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using NUnit.Framework;
 
 namespace ExtjsWd.Test
 {
@@ -11,7 +12,7 @@ namespace ExtjsWd.Test
 
         public override string ResolveHostAndPort()
         {
-            return Directory.GetCurrentDirectory() + "/ExtSandBox/test4.html";
+            return Path.Combine(TestContext.CurrentContext.TestDirectory,  "ExtSandBox/test4.html");
         }
     }
 }

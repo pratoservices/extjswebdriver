@@ -79,7 +79,9 @@
     <None Include="ExtSandBox\test4.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="ExtSandBox\test.js" />
+    <Content Include="ExtSandBox\test.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtjsWd\ExtjsWd.csproj">

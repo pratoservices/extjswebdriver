@@ -20,7 +20,9 @@ namespace ExtjsWd.Test
                     .WithFieldLabel("TestLabel")
                     .WithClassName("wd-test")
                     .WithValue("Dit is een Test")
+                    .WithListener("specialkey", "function(field, event) { window.enterPressed = event.getKey() === event.ENTER; }")
                     .Build()
+
                 .WriteItemsToTestjs();
         }
 
@@ -51,6 +53,32 @@ namespace ExtjsWd.Test
             inputTextField.FillIn("Dit is de andere test");
 
             Assert.AreEqual("Dit is de andere test", domInputTextField.Value);
+        }
+
+        [Test]
+        public void TextField_CanDetermineHasFocus()
+        {
+            var textFieldElement = Driver.FindElement(By.Name(_TextFieldName));
+            var inputTextField = new InputTextField(textFieldElement, Driver);
+
+            Assert.IsFalse(inputTextField.HasFocus);
+
+            inputTextField.Click();
+
+            Assert.IsTrue(inputTextField.HasFocus);
+        }
+
+        [Test]
+        public void TextField_CanPressEnter()
+        {
+            var textFieldElement = Driver.FindElement(By.Name(_TextFieldName));
+            var inputTextField = new InputTextField(textFieldElement, Driver);
+
+            inputTextField.PressEnter();
+
+            var enterPressed = (bool)((IJavaScriptExecutor) Driver).ExecuteScript("return window.enterPressed;");
+
+            Assert.IsTrue(enterPressed);
         }
     }
 }
