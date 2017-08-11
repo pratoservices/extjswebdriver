@@ -23,7 +23,7 @@ DLL requirements are handled through Nuget.
 
 * Extjs 4. 
 * NUnit >= 2.6.4
-* Selenium WebDriver >= 2.44.0 including Selenium Support
+* Selenium WebDriver >= 3.5.0 including Selenium Support
 * RestSharp (why? see below) >= 105.0.1
 
 * * *
