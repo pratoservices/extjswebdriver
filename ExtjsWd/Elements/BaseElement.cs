@@ -1,9 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using ExtjsWd.js;
+using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Interactions.Internal;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using ExtjsWd.js;
 
 namespace ExtjsWd.Elements
 {
@@ -29,11 +29,6 @@ namespace ExtjsWd.Elements
             get { return ((ILocatable)Element).Coordinates; }
         }
 
-        public string Value
-        {
-            get { return JSCommands.GetPropertyOfWebElement(this, "value"); }
-        }
-
         public bool Displayed
         {
             get { return Element.Displayed; }
@@ -42,6 +37,11 @@ namespace ExtjsWd.Elements
         public bool Enabled
         {
             get { return Element.Enabled; }
+        }
+
+        public bool HasFocus
+        {
+            get { return Driver.SwitchTo().ActiveElement().Equals(Element); }
         }
 
         public Point Location
@@ -74,9 +74,9 @@ namespace ExtjsWd.Elements
             get { return Element.Text; }
         }
 
-        public bool HasFocus
+        public string Value
         {
-            get { return Driver.SwitchTo().ActiveElement().Equals(Element); }
+            get { return JSCommands.GetPropertyOfWebElement(this, "value"); }
         }
 
         public void Clear()
@@ -113,6 +113,11 @@ namespace ExtjsWd.Elements
         public string GetCssValue(string propertyName)
         {
             return Element.GetCssValue(propertyName);
+        }
+
+        public string GetProperty(string propertyName)
+        {
+            return Element.GetProperty(propertyName);
         }
 
         public void SendKeys(string text)

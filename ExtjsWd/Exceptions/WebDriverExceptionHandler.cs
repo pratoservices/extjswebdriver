@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium.Remote;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Diagnostics;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
@@ -23,7 +23,7 @@ namespace ExtjsWd.Exceptions
                 "-- Stacktrace: " + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
                 "-- Service log: " + Environment.NewLine + (extraLogInfoResolver ?? new NoLogInfoResolver()).ReadLog());
 
-            RemoteWebDriver().GetScreenshot().SaveAsFile(fileName + ".png", ImageFormat.Png);
+            RemoteWebDriver().GetScreenshot().SaveAsFile(fileName + ".png", ScreenshotImageFormat.Png);
 
             PrintExceptions();
 

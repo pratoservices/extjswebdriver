@@ -27,13 +27,12 @@ namespace ExtjsWd
             get { return int.Parse(EvalJS("return window.ajaxRequests").ToString()); }
         }
 
+        public IWebDriver Driver { get; private set; }
+
         public int ExtVersion
         {
             get { return int.Parse(EvalJS("return Ext.versions.extjs.getMajor();").ToString()); }
         }
-
-      
-        public IWebDriver Driver { get; private set; }
 
         public static IWebDriver CreateChromeDriver(TimeSpan timeout)
         {
@@ -77,13 +76,13 @@ namespace ExtjsWd
             {
                 return ((IJavaScriptExecutor)Driver).ExecuteScript(js);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
-       
         }
-    public object EvalJS(IWebElement webElement, string js)
+
+        public object EvalJS(IWebElement webElement, string js)
         {
             try
             {
@@ -102,7 +101,7 @@ namespace ExtjsWd
         {
             Driver = CreateChromeDriver(DefaultTimeoutForPages);
 
-            Driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 0, 0, 500));
+            Driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 0, 0, 500);
             Driver.Navigate().GoToUrl(ResolveHostAndPort());
         }
 
