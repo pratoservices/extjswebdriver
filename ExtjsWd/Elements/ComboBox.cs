@@ -135,7 +135,7 @@ namespace ExtjsWd.Elements
         public T ShouldHaveValueFilledIn(string item)
         {
             var val = Input.GetValue().Trim();
-            Assert.IsTrue(val.StartsWith(item.Trim()), "Expected input value to contain '" + item + "' but was '" + val);
+            Assert.IsTrue(val.StartsWith(item.Trim()), "Expected input value to contain '" + item + "' but was '" + val + "'");
             return (T)this;
         }
 
