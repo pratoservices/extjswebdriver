@@ -141,11 +141,7 @@ namespace ExtjsWd.Elements
 
         public T ShouldNotSelectItem(string item)
         {
-            Input.Clear();
-            Input.SendKeys(Keys.ArrowDown);
-            Input.SendKeys(item.Substring(0, item.Length - 1));
-            Input.SendKeys(Keys.Return);
-            Input.SendKeys(Keys.Tab);
+            FillIn(item);
 
             Assert.AreNotEqual(item.Trim(), Input.GetValue().Trim());
 
@@ -154,11 +150,7 @@ namespace ExtjsWd.Elements
 
         public T ShouldSelectItem(string item)
         {
-            Input.Clear();
-            Input.SendKeys(Keys.ArrowDown);
-            Input.SendKeys(item.Substring(0, item.Length - 1));
-            Input.SendKeys(Keys.Return);
-            Input.SendKeys(Keys.Tab);
+            FillIn(item);
 
             Assert.IsTrue(Input.GetValue().Trim().Contains(item.Trim()));
 
