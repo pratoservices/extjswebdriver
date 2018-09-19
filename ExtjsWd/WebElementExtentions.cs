@@ -226,8 +226,16 @@ namespace ExtjsWd
 
         public static IWebElement WaitUntilAjaxLoadingDone(this IWebElement callee)
         {
-            callee.Wait(30).Until(x => ScenarioFixture.Instance.AjaxRequestsBusy == 0);
+            callee.Wait(30).Until(x => AreAllAjaxRequestsDone(callee));
             return callee;
+        }
+
+        private static bool AreAllAjaxRequestsDone(IWebElement callee)
+        {
+            if (ScenarioFixture.Instance.AjaxRequestsBusy != 0) return false;
+
+            callee.WaitForSomeMiliTime(150);
+            return ScenarioFixture.Instance.AjaxRequestsBusy == 0;
         }
 
         private static bool NotDisplayedOrAlreadyGoneFromDOMTree(IWebElement el)
