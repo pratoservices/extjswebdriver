@@ -84,14 +84,20 @@ namespace ExtjsWd.Elements
 
         public static T WaitUntilAjaxLoadingDone<T>(this T callee) where T : BaseContainerComponent
         {
-            callee.WaitUntil(30, x => callee.AjaxRequestsBusy == 0);
-            return callee;
+            return WaitUntilAjaxLoadingDone(callee, 30);
         }
 
         public static T WaitUntilAjaxLoadingDone<T>(this T callee, int timeoutSeconds) where T : BaseContainerComponent
         {
-            callee.WaitUntil(timeoutSeconds, x => callee.AjaxRequestsBusy == 0);
+            callee.WaitUntil(timeoutSeconds, x => AreAllAjaxRequestsDone(callee));
             return callee;
+        }
+
+        private static bool AreAllAjaxRequestsDone<T>(T callee)
+        {
+            if (ScenarioFixture.Instance.AjaxRequestsBusy != 0) return false;
+            callee.WaitForSomeMiliTime(150);
+            return ScenarioFixture.Instance.AjaxRequestsBusy == 0;
         }
 
         public static T WaitUntilExtLoadingDone<T>(this T callee) where T : BaseContainerComponent
