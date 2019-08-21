@@ -61,6 +61,7 @@ namespace ExtjsWd.js
         {
             var id = webElement.GetAttribute("id");
             ScenarioFixture.Instance.EvalJS("document.getElementById('" + id + "').scrollIntoView(true);");
+            webElement.Wait(30).Until(x => webElement.Displayed);
         }
 
         public static void SetAttribute(IWebElement webElement, string attributeName, string value)
