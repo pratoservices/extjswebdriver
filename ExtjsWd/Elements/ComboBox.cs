@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace ExtjsWd.Elements
@@ -33,7 +32,8 @@ namespace ExtjsWd.Elements
 
         public IWebElement ArrowDown
         {
-            get {
+            get
+            {
                 try
                 {
                     return Root.FindElement(By.CssSelector("[role=\"button\"]"));
@@ -42,8 +42,7 @@ namespace ExtjsWd.Elements
                 {
                     return Root.FindElement(By.CssSelector(".x-form-arrow-trigger"));
                 }
-                
-             }
+            }
         }
 
         public virtual bool Enabled
@@ -63,34 +62,12 @@ namespace ExtjsWd.Elements
 
         public static void SelectFirstItem(IWebElement element)
         {
-            element.Clear();
-            if (ScenarioFixture.Instance.ExtVersion == 4)
-            {
-                element.SendKeys(Keys.ArrowDown);
-                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
-            }
-            element.SendKeys(Keys.ArrowDown);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
-            element.SendKeys(Keys.Return);
-            element.SendKeys(Keys.Tab);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            SelectAtIndex(element, 0);
         }
-        
+
         public static void SelectSecondItem(IWebElement element)
         {
-            element.Clear();
-            if (ScenarioFixture.Instance.ExtVersion == 4)
-            {
-                element.SendKeys(Keys.ArrowDown);
-                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
-            }
-            element.SendKeys(Keys.ArrowDown);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
-            element.SendKeys(Keys.ArrowDown);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
-            element.SendKeys(Keys.Return);
-            element.SendKeys(Keys.Tab);
-            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            SelectAtIndex(element, 1);
         }
 
         public void Clear()
@@ -102,12 +79,18 @@ namespace ExtjsWd.Elements
 
         public abstract T FillIn(string value);
 
+        public virtual T SelectAtIndex(int index)
+        {
+            SelectAtIndex(Input, index);
+            return (T)this;
+        }
+
         public virtual T SelectFirstItem()
         {
             SelectFirstItem(Input);
             return (T)this;
         }
-        
+
         public virtual T SelectSecondItem()
         {
             SelectSecondItem(Input);
@@ -160,6 +143,26 @@ namespace ExtjsWd.Elements
         public override void WaitUntilComponentLoaded()
         {
             WaitUntil(driver => Input.Displayed);
+        }
+
+        private static void SelectAtIndex(IWebElement element, int index)
+        {
+            element.Clear();
+            if (ScenarioFixture.Instance.ExtVersion == 4)
+            {
+                element.SendKeys(Keys.ArrowDown);
+                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            }
+
+            for (var i = 0; i <= index; i++)
+            {
+                element.SendKeys(Keys.ArrowDown);
+                WebElementExtentions.WaitUntilAjaxLoadingDone(element);
+            }
+
+            element.SendKeys(Keys.Return);
+            element.SendKeys(Keys.Tab);
+            WebElementExtentions.WaitUntilAjaxLoadingDone(element);
         }
     }
 }
