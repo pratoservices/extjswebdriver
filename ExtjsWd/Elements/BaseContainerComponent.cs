@@ -169,6 +169,20 @@ namespace ExtjsWd.Elements
 
         public abstract void WaitUntilComponentLoaded();
 
+        public bool WaitUntilElementIsVisibleInView(IWebElement element)
+        {
+            Func<IWebDriver, bool> IsElementVisibleInView = (driver) =>
+            {
+                return (bool)((IJavaScriptExecutor)Driver).ExecuteScript(@"
+        var element = arguments[0];
+        var boundingBox = element.getBoundingClientRect();
+        var cx = boundingBox.left + boundingBox.width/2, cy = boundingBox.top + boundingBox.height/2;
+        return !!document.elementFromPoint(cx, cy);
+        ", element);
+            };
+            return CreateWebDriverWait(TimeoutInSeconds).Until(drvr => IsElementVisibleInView(drvr));
+        }
+
         protected IWebElement FindButton(IWebElement container, string text)
         {
             return container.FindElements(By.CssSelector(".x-btn")).Single(e => e.Text.Contains(text));
