@@ -97,7 +97,7 @@ namespace ExtjsWd.Elements
 
         public void DownloadDocumentFrameShouldBeVisible()
         {
-            Assert.IsTrue(Driver.Wait(10).Until(x => DocumentDownloadButtonInFrameDisplayed));
+            Assert.IsTrue(Driver.Wait(30).Until(x => DocumentDownloadButtonInFrameDisplayed));
         }
 
         public object EvalJS(string js)
