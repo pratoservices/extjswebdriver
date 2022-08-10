@@ -11,8 +11,9 @@
     <dependencies>
         <dependency id="NUnit" version="3.9.0" />
         <dependency id="RestSharp" version="[105.0.1]" />
-        <dependency id="Selenium.Support" version="[3.7.0]" />
-        <dependency id="Selenium.WebDriver" version="[3.7.0]" />
+        <dependency id="Selenium.Support" version="3.7.0" />
+        <dependency id="Selenium.WebDriver" version="3.7.0" />
+        <dependency id="SeleniumExtras.PageObjects" version="3.11.0" />
     </dependencies>
   </metadata>
 </package>
