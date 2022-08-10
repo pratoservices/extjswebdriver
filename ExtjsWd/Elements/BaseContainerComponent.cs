@@ -1,8 +1,8 @@
 ﻿using ExtjsWd.js;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
