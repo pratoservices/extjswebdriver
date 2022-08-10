@@ -115,9 +115,19 @@ namespace ExtjsWd.Elements
             return Element.GetCssValue(propertyName);
         }
 
-        public string GetProperty(string propertyName)
+        public string GetDomAttribute(string attributeName)
         {
-            return Element.GetProperty(propertyName);
+            return Element.GetDomAttribute(attributeName);
+        }
+
+        public string GetDomProperty(string propertyName)
+        {
+            return Element.GetDomProperty(propertyName);
+        }
+
+        public ISearchContext GetShadowRoot()
+        {
+            return Element.GetShadowRoot();
         }
 
         public void SendKeys(string text)

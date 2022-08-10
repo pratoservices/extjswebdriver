@@ -33,7 +33,6 @@ namespace ExtjsWd.Test
             if (_TestFixture != null)
             {
                 _TestFixture.CleanupChromeDriver();
-                _TestFixture.Dispose();
                 _TestFixture = null;
             }
         }
