@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -23,7 +22,7 @@ namespace ExtjsWd.Exceptions
                 "-- Stacktrace: " + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
                 "-- Service log: " + Environment.NewLine + (extraLogInfoResolver ?? new NoLogInfoResolver()).ReadLog());
 
-            RemoteWebDriver().GetScreenshot().SaveAsFile(fileName + ".png", ScreenshotImageFormat.Png);
+            WebDriver().GetScreenshot().SaveAsFile(fileName + ".png", ScreenshotImageFormat.Png);
 
             PrintExceptions();
 
@@ -32,14 +31,14 @@ namespace ExtjsWd.Exceptions
 
         public static void PrintExceptions()
         {
-            var exceptions = RemoteWebDriver().ExecuteScript("return window.errors") as System.Collections.ObjectModel.ReadOnlyCollection<object>[];
+            var exceptions = WebDriver().ExecuteScript("return window.errors") as System.Collections.ObjectModel.ReadOnlyCollection<object>[];
 
             if (exceptions != null)
             {
                 exceptions.ToList().ForEach(exception => Debug.WriteLine(exception.ToString()));
             }
 
-            RemoteWebDriver().ExecuteScript("window.errors = [];");
+            WebDriver().ExecuteScript("window.errors = [];");
         }
 
         public static void Wrap(Action action, IExceptionLogInfoResolver exceptionLogInfoResolver = null)
@@ -59,9 +58,9 @@ namespace ExtjsWd.Exceptions
             return "ex-" + DateTime.Now.ToString("yy-MM-dd-HH-mm-ss");
         }
 
-        private static RemoteWebDriver RemoteWebDriver()
+        private static WebDriver WebDriver()
         {
-            return (RemoteWebDriver)ScenarioFixture.Instance.Driver;
+            return (WebDriver)ScenarioFixture.Instance.Driver;
         }
     }
 }
