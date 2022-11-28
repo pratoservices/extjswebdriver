@@ -1,7 +1,6 @@
 ﻿using ExtjsWd.js;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections;
@@ -27,8 +26,6 @@ namespace ExtjsWd.Elements
             TimeoutInSeconds = timeoutInSeconds;
             Driver = driver;
             SystemErrorDetectionText = "Systeem fout";
-
-            PageFactory.InitElements(driver, this);
         }
 
         public int AjaxRequestsBusy
