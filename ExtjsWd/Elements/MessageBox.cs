@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using OpenQA.Selenium;
 
 namespace ExtjsWd.Elements
 {
@@ -14,7 +14,7 @@ namespace ExtjsWd.Elements
         {
             _checkMessageInsteadOfTitle = checkMessageInsteadOfTitle;
             MessageText = messageText;
-            WaitUntil(10, x => FindMessageBoxes(driver).Any());
+            WaitUntil(20, x => FindMessageBoxes(driver).Any());
             _messageBoxRoot = FindMessageBoxes(driver).Last();
             WaitUntilComponentLoaded();
         }
