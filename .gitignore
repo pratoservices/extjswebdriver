@@ -10,3 +10,4 @@ obj/
 *.suo
 ExtjsWd/.vs/ExtjsWd/v14/.suo
 /ExtjsWd/.vs/ExtjsWd/v16/Server/sqlite3
+ExtjsWd/.vs/*
