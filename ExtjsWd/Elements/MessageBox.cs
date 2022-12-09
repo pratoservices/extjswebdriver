@@ -6,6 +6,7 @@ namespace ExtjsWd.Elements
 {
     public class MessageBox : BaseContainerComponent
     {
+        private const int _STANDARD_TIMEOUT = 60;
         private readonly bool _checkMessageInsteadOfTitle;
         private readonly IWebElement _messageBoxRoot;
 
@@ -49,19 +50,19 @@ namespace ExtjsWd.Elements
         public void Accept(string text = "Ja")
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
-            this.WaitUntilAjaxLoadingDone();
+            this.WaitUntilAjaxLoadingDone(_STANDARD_TIMEOUT);
         }
 
         public void DontSave(string text = "Niet opslaan")
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
-            this.WaitUntilAjaxLoadingDone();
+            this.WaitUntilAjaxLoadingDone(_STANDARD_TIMEOUT);
         }
 
         public void Ok(string text = "OK")
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
-            this.WaitUntilAjaxLoadingDone();
+            this.WaitUntilAjaxLoadingDone(_STANDARD_TIMEOUT);
         }
 
         public MessageBox Prompt(string text = "")
@@ -73,13 +74,13 @@ namespace ExtjsWd.Elements
         public void Reject(string text = "Nee")
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
-            this.WaitUntilAjaxLoadingDone();
+            this.WaitUntilAjaxLoadingDone(_STANDARD_TIMEOUT);
         }
 
         public void Save(string text = "Opslaan")
         {
             Buttons.Single(btn => btn.Text.Equals(text)).Click();
-            this.WaitUntilAjaxLoadingDone();
+            this.WaitUntilAjaxLoadingDone(_STANDARD_TIMEOUT);
         }
 
         public void ShouldHaveNoErrorTip()
