@@ -118,6 +118,7 @@ namespace ExtjsWd
             options.AddArgument("disable-translate");
             options.AddArgument("ignore-certificate-errors");
             options.AddArgument("no-sandbox");
+            options.AddArgument("disable-search-engine-choice-screen");
             return options;
         }
 
