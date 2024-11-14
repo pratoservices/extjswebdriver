@@ -1,8 +1,8 @@
 ﻿using ExtjsWd.js;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -174,6 +174,7 @@ namespace ExtjsWd.Elements
             Func<IWebDriver, bool> IsElementVisibleInView = (driver) =>
             {
                 return (bool)((IJavaScriptExecutor)Driver).ExecuteScript(@"
+console.log(arguments);
         var element = arguments[0];
         var boundingBox = element.getBoundingClientRect();
         var cx = boundingBox.left + boundingBox.width/2, cy = boundingBox.top + boundingBox.height/2;
