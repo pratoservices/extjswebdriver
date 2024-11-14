@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ExtjsWd</id>
-    <version>1.6.65</version>
+    <version>1.6.63</version>
     <title>ExtjsWd</title>
     <authors>Prato Services</authors>
     <owners>Prato Services</owners>
@@ -11,8 +11,8 @@
     <dependencies>
         <dependency id="NUnit" version="3.11.0" />
         <dependency id="RestSharp" version="[105.0.1]" />
-        <dependency id="Selenium.Support" version="[4.26.1]" />
-        <dependency id="Selenium.WebDriver" version="[4.26.1]" />
+        <dependency id="Selenium.Support" version="[3.7.0]" />
+        <dependency id="Selenium.WebDriver" version="[3.7.0]" />
     </dependencies>
   </metadata>
 </package>
