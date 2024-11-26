@@ -175,7 +175,7 @@ namespace ExtjsWd.Elements
             {
                 return (bool)((IJavaScriptExecutor)Driver).ExecuteScript(@"
         var element = arguments[0];
-        if(!element) return false;
+        if(!element) return element;
         var boundingBox = element.getBoundingClientRect();
         var cx = boundingBox.left + boundingBox.width/2, cy = boundingBox.top + boundingBox.height/2;
         return !!document.elementFromPoint(cx, cy);
