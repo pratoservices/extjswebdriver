@@ -119,7 +119,7 @@ namespace ExtjsWd
             options.AddArgument("ignore-certificate-errors");
             options.AddArgument("no-sandbox");
             options.AddArgument("disable-search-engine-choice-screen");
-            options.AddArgument("window-size=1920,1080");
+            options.AddArgument("--window-size=1920,1080");
             return options;
         }
 
