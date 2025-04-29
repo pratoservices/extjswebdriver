@@ -34,7 +34,7 @@ namespace ExtjsWd
             get { return int.Parse(EvalJS("return Ext.versions.extjs.getMajor();").ToString()); }
         }
 
-        public static IWebDriver CreateChromeDriver(TimeSpan timeout)
+        public IWebDriver CreateChromeDriver(TimeSpan timeout)
         {
             return new ChromeDriver(ChromeDriverService.CreateDefaultService(), ChromeOptions(), timeout);
         }
@@ -110,19 +110,7 @@ namespace ExtjsWd
             return new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
         }
 
-        private static ChromeOptions ChromeOptions()
-        {
-            var options = new ChromeOptions();
-            options.AddArgument("start-maximized");
-            options.AddArgument("headless");
-            options.AddArgument("disable-popup-blocking");
-            options.AddArgument("disable-translate");
-            options.AddArgument("ignore-certificate-errors");
-            options.AddArgument("no-sandbox");
-            options.AddArgument("disable-search-engine-choice-screen");
-            options.AddArgument("--window-size=1920,1080");
-            return options;
-        }
+        public abstract ChromeOptions ChromeOptions();
 
         private static void ForceKillExe(string executable)
         {
