@@ -114,6 +114,7 @@ namespace ExtjsWd
         {
             var options = new ChromeOptions();
             options.AddArgument("start-maximized");
+            options.AddArgument("headless");
             options.AddArgument("disable-popup-blocking");
             options.AddArgument("disable-translate");
             options.AddArgument("ignore-certificate-errors");
